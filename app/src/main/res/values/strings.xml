@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Profile Page</string>
+    <string name="Title">Edit Profile</string>
+    <string name="profile_image">Insert image</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_name_edit">Insert your name</string>
+    <string name="phone_number">Phone</string>
+    <string name="phone_number_edit">Insert your phone number</string>
+    <string name="email">Email</string>
+    <string name="email_edit">Insert Email</string>
+    <string name="bio">Tell us about yourself</string>
+    <string name="bio_edit">What a little bit about yourself. Do you like Chatting? Are you a smoker? Do you bring pets with you? Etc.</string>
+
+
+    <string name="update_name_header">What"'"s is your name?</string>
+    <string name="update_image_header">Upload a photo of yourself: </string>
+    <string name="update_phone_header">What"'"s is your phone number?</string>
+    <string name="update_email_header">What"'"s is your email?</string>
+    <string name="update_bio_header">What type of passenger are you?</string>
+
+    <string name="ep_your_first_name">First Name</string>
+    <string name="ep_your_last_name">Last Name</string>
+    <string name="ep_your_phone">Your Phone Number</string>
+    <string name="ep_your_email">Your email address</string>
+
+    <string name="update_btn">Update</string>
+
+</resources>
