@@ -17,8 +17,11 @@ class EditPage : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_page)
-        val findKey = intent.getStringExtra(UPDATE_KEY)
+        //reset the errorCheck
+        ErrorCheck = 0
 
+
+        val findKey = intent.getStringExtra(UPDATE_KEY)
         val toSet = Gson().fromJson(findKey,SettingModel::class.java)
         if(toSet != null){
             profileName = toSet.profileName
@@ -75,18 +78,21 @@ class EditPage : AppCompatActivity(), View.OnClickListener {
                     "Name"->{
                         first = ep_first_name_edit.editableText.toString()
                         last = ep_last_name_edit.editableText.toString()
+
                         // Check if both first and last name entry are filled or not
                         if(isNullOrEmpty(first) || isNullOrEmpty(last)) {
                             ErrorCheck =1
-                            ErrorMessage = "Please fill out both boxes"
+                            ErrorMessage = "Please enter your full name"
                         }else {
                             ErrorCheck =0
-                            profileName = first + " " + last
+                            profileName = first.capitalize() + " " + last.capitalize()
                             ep_name_layout.visibility = View.GONE
                         }
                     }
                     "Phone"->{
                         phone = ep_phone_edit.editableText.toString()
+
+                        //Checking if the Phone Number is exactly 10 numbers
                         val phoneNumCheck = phone.filter{it.isDigit()}
                         val length = phoneNumCheck.length
                         if(length == 10){
@@ -100,18 +106,29 @@ class EditPage : AppCompatActivity(), View.OnClickListener {
                     }
                     "Email"->{
                         email = ep_email_edit.editableText.toString()
+
+                        //checking two things:
+                        //1) If it has a "@" in the email
+                        //2) If the last 4 characters are ".com" or ".edu"
                         if(isNullOrEmpty(email)){
                             ErrorCheck =1
                             ErrorMessage = "Please enter your email"
                         }else{
-                            val emailCheck = email.takeLast(4)
-                            if(emailCheck.contains(".com") || emailCheck.contains(".edu")){
-                                ErrorCheck =0
-                                ep_email_layout.visibility=View.GONE
+                            if(email.contains("@")){
+                                val emailCheck = email.takeLast(4)
+                                if(emailCheck.contains(".com") || emailCheck.contains(".edu")){
+                                    ErrorCheck =0
+                                    ep_email_layout.visibility=View.GONE
+                                }else{
+                                    ErrorCheck =1
+                                    ErrorMessage = "Needs to have '.com' or 'edu' at the end"
+                                }
                             }else{
                                 ErrorCheck =1
-                                ErrorMessage = "needs to have '.com' or 'edu' at the end"
+                                ErrorMessage = "You are missing '@' in your email!"
+
                             }
+
                         }
                     }
                     "Bio"->{

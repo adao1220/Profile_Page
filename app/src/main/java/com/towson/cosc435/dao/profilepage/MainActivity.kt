@@ -1,7 +1,10 @@
 package com.towson.cosc435.dao.profilepage
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -28,8 +31,46 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
         // for some reason, needed to added this to make the large box clickable
         pp_bio_info.setOnClickListener{Edit("Bio")}
 
+        pp_profile_image.setOnClickListener{
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                        PackageManager.PERMISSION_DENIED){
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permissions, PERMISSION_CODE)
+                }
+                else{
+                    //Permission granted
+                    ImageGallery()
+                }
+            }
+            else{
+                //System OS is < Marshmellow
+                ImageGallery()
+
+
+            }
+        }
     }
 
+    private fun ImageGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode){
+            PERMISSION_CODE->{
+                if(grantResults.size>0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED){
+                    ImageGallery()
+                }
+                else{
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
     private fun displayProfile() {
         when(val toSet = settingVar.getSetting(0)){
             null ->{
@@ -64,6 +105,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        //Activity Result for the image
+        if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            pp_profile_image.setImageURI(data?.data)
+        }
         when(requestCode){
             EMAIL_REQUEST_CODE->{
                 when(resultCode){
@@ -84,6 +129,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     }
     companion object{
         val TAG = "TEST"
+        private val IMAGE_PICK_CODE = 1000
+        private val PERMISSION_CODE = 1001
         val EMAIL_REQUEST_CODE = 1
         var UPDATE_KEY = ""
         var load = 0

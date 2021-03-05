@@ -19,23 +19,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/pp_profile_image"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/me"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/me"
+        app:civ_border_color="?android:attr/colorEdgeEffect"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pp_edit_profile_title"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:ignore="MissingConstraints" />
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/pp_profile_image"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:background="@drawable/me"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.508"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/pp_edit_profile_title"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
 
     <LinearLayout
         android:id="@+id/name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:clickable="true"
         android:orientation="vertical"
