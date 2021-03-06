@@ -208,8 +208,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="#D6D6D6"
                 android:textStyle="bold"
-                android:visibility="gone"
-                tools:visibility="visible" />
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>

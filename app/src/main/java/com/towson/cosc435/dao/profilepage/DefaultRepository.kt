@@ -7,7 +7,7 @@ class DefaultRepository: ISettingRepository {
     val set: MutableList<SettingModel> = mutableListOf()
 
     init{
-        set.add(SettingModel("Alexander Dao","(202)758-8602","alexander.p.dao@gmail.com", "I love food and sleeping"))
+        set.add(SettingModel("Alexander Dao","(123)456-7890","AlwaysHungry@gmail.com", "I love food and sleeping"))
     }
 
     override fun getSettings(): List<SettingModel> {
