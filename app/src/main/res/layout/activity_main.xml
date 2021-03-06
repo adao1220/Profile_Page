@@ -24,7 +24,6 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/me"
         app:civ_border_color="?android:attr/colorEdgeEffect"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +42,17 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/pp_edit_profile_title"-->
 <!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+    <ImageButton
+        android:id="@+id/pp_profile_image_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="3dp"
+        android:backgroundTint="#001C0A0A"
+        app:layout_constraintBottom_toBottomOf="@+id/pp_profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/pp_profile_image"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <LinearLayout
         android:id="@+id/name_layout"

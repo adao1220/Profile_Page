@@ -5,6 +5,7 @@ import com.towson.cosc435.dao.profilepage.model.SettingModel
 
 class DefaultRepository: ISettingRepository {
     val set: MutableList<SettingModel> = mutableListOf()
+
     init{
         set.add(SettingModel("Alexander Dao","(202)758-8602","alexander.p.dao@gmail.com", "I love food and sleeping"))
     }
