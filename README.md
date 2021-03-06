@@ -35,6 +35,6 @@
 > - ![run 2](https://user-images.githubusercontent.com/47760438/110179618-5f489e00-7dd6-11eb-8df1-1e7ccbd0b1dd.PNG)<br/>
 > - (It will take a few seconds to install and load)<br/>
 ### Your app should be up and loading!
-> - ![run 3](https://user-images.githubusercontent.com/47760438/110179621-5fe13480-7dd6-11eb-85a6-6f86b6bec984.PNG)
+> - ![123](https://user-images.githubusercontent.com/47760438/110216246-03385500-7e7c-11eb-90f0-f1c0bee94e1c.PNG)
 
 
